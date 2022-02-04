@@ -30,14 +30,86 @@
 // const htmlClick = document.querySelector("#htmlClick");//defined the whole html, so event happends on the whole page
 // const clickForHtml = () => alert("When you click anywhere on the page");
 // htmlClick.addEventListener("click", clickForHtml, false);
-///////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
 
 /////ready state change event. makes it safer to work with the Document Object Model when you 
 //load the page. This is saying that the page is loaded. Although, something about its not really
 //there are different stages of a page load. but if you look for the ready state being complete you
 //you will know that the page is loaded enough that the DOM is loaded and you are ready to interact
-document.addEventListener("readystatechange", event => {
 
+
+
+// document.addEventListener("readystatechange", event => {
+//     if (event.target.readyState === "complete") {
+//         console.log("readyState: complete");
+//         initApp();//call the initApp function
+//     }    
+// });    
+
+// const initApp = () => {
+//     const view = document.querySelector("#view2");
+//     const div = view.querySelector("div");
+//     const h2 = div.querySelector("h2");
+
+//     view.addEventListener("click", event => {
+//         view.style.backgroundColor = "purple"
+//         }, false //remember that false is by default //this means that we are not going to use capture. We prefer event bubbling
+//         //if set to true the buble effect will happen from outer to in
+//     );        
+    
+//     div.addEventListener("click", event => {
+//         // event.stopPropagation();
+//         div.style.backgroundColor = "blue";
+//     }, false);
+    
+//     h2.addEventListener("click", event => {
+//         // event.stopPropagation(); //if I do not have this here. the click event will "bubble effect" from inwards out.
+//         //these click events are nested. this being the bottom of the nest. When this event happends it bubles up/outwords not stopping. 
+//         //if I want the event to stop. I must declare the event.stop 
+//         event.target.textContent = "Clicked"
+//     }, false);
+// };    
+// ///////////////////////////////////////////////////////////////////////////////
+
+
+
+//EVENT.TARGET
+
+// document.addEventListener("readystatechange", event => {
+//     if (event.target.readyState === "complete") {
+//         console.log("readyState: complete");
+//         initApp();//call the initApp function
+//     }    
+// });    
+
+// const initApp = () => {
+//     const view = document.querySelector("#view2");
+//     const div = view.querySelector("div");
+//     const h2 = div.querySelector("h2");
+
+//     view.addEventListener("click", event => {
+//         event.target.style.backgroundColor = "purple"
+//         // event.stopPropagation();
+//     }, false //remember that false is by default //this means that we are not going to use capture. We prefer event bubbling
+//     //if set to true the buble effect will happen from outer to in
+//     );        
+    
+//     div.addEventListener("click", event => {
+//         event.target.style.backgroundColor = "blue";
+//     }, false);
+    
+//     h2.addEventListener("click", event => { 
+//         // event.stopPropagation();
+//         event.target.textContent = "Clicked"
+//     }, false);
+    
+    
+// };
+////////////////////////////////////////////////////////////////
+
+
+
+document.addEventListener("readystatechange", event => {
     if (event.target.readyState === "complete") {
         console.log("readyState: complete");
         initApp();//call the initApp function
@@ -50,35 +122,31 @@ const initApp = () => {
     const h2 = div.querySelector("h2");
 
     view.addEventListener("click", event => {
-        view.style.backgroundColor = "purple"
-        }, false //remember that false is by default //this means that we are not going to use capture. We prefer event bubbling
-        //if set to true the buble effect will happen from outer to in
-    );        
+        // view.style.backgroundColor = "green "
+        
+        view.classList.toggle("purple"); //access the class
+        view.classList.toggle("darkblue");
+    }, false);        
     
     div.addEventListener("click", event => {
         // event.stopPropagation();
-        div.style.backgroundColor = "blue";
+        // div.style.backgroundColor = "blue";
+        div.classList.toggle("blue");
+        div.classList.toggle("black");
+        
     }, false);
     
     h2.addEventListener("click", event => {
         // event.stopPropagation(); //if I do not have this here. the click event will "bubble effect" from inwards out.
         //these click events are nested. this being the bottom of the nest. When this event happends it bubles up/outwords not stopping. 
         //if I want the event to stop. I must declare the event.stop 
-        event.target.textContent = "Clicked"
+        
+        
+        const myText = event.target.textContent;
+        myText === "My 2nd View" ? (event.target.textContent = "Clicked") : (event.target.textContent = "My 2nd View");
+
     }, false);
 };    
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
