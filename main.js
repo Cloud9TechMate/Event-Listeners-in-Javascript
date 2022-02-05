@@ -109,47 +109,67 @@
 
 
 
-document.addEventListener("readystatechange", event => {
-    if (event.target.readyState === "complete") {
+// document.addEventListener("readystatechange", event => {
+//     if (event.target.readyState === "complete") {
+//         console.log("readyState: complete");
+//         initApp();//call the initApp function
+//     }    
+// });    
+
+// const initApp = () => {
+//     const view = document.querySelector("#view2");
+//     const div = view.querySelector("div");
+//     const h2 = div.querySelector("h2");
+
+//     view.addEventListener("click", event => {
+//         // view.style.backgroundColor = "green "
+        
+//         view.classList.toggle("purple"); //access the class
+//         view.classList.toggle("darkblue");
+//     }, false);        
+    
+//     div.addEventListener("click", event => {
+//         // event.stopPropagation();
+//         // div.style.backgroundColor = "blue";
+//         div.classList.toggle("blue");
+//         div.classList.toggle("black");
+        
+//     }, false);
+    
+//     h2.addEventListener("click", event => {
+//         // event.stopPropagation(); //if I do not have this here. the click event will "bubble effect" from inwards out.
+//         //these click events are nested. this being the bottom of the nest. When this event happends it bubles up/outwords not stopping. 
+//         //if I want the event to stop. I must declare the event.stop 
+//         const myText = event.target.textContent;
+//         myText === "My 2nd View" ? (event.target.textContent = "Clicked") : (event.target.textContent = "My 2nd View");
+//     }, false);
+
+//     const nav = document.querySelector("nav");
+//     nav.addEventListener("mouseover", event => {
+//         event.target.classList.add("height100");
+//     }, false)
+//     nav.addEventListener("mouseout", event =>{
+//         event.target.classList.remove("height100");
+//     });
+// };    
+
+////////////////////////////////////////////////////////////////////////
+
+document.addEventListener("readystatechange", (event) => {
+    if(event.target.readyState === "complete") {
         console.log("readyState: complete");
-        initApp();//call the initApp function
-    }    
-});    
+        initApp();
+    }
+})
 
 const initApp = () => {
-    const view = document.querySelector("#view2");
-    const div = view.querySelector("div");
-    const h2 = div.querySelector("h2");
-
-    view.addEventListener("click", event => {
-        // view.style.backgroundColor = "green "
-        
-        view.classList.toggle("purple"); //access the class
-        view.classList.toggle("darkblue");
-    }, false);        
-    
-    div.addEventListener("click", event => {
-        // event.stopPropagation();
-        // div.style.backgroundColor = "blue";
-        div.classList.toggle("blue");
-        div.classList.toggle("black");
-        
-    }, false);
-    
-    h2.addEventListener("click", event => {
-        // event.stopPropagation(); //if I do not have this here. the click event will "bubble effect" from inwards out.
-        //these click events are nested. this being the bottom of the nest. When this event happends it bubles up/outwords not stopping. 
-        //if I want the event to stop. I must declare the event.stop 
-        
-        
-        const myText = event.target.textContent;
-        myText === "My 2nd View" ? (event.target.textContent = "Clicked") : (event.target.textContent = "My 2nd View");
-
-    }, false);
-};    
-
-
-
+    const view3 = document.querySelector("#view3");
+    const myForm = view3.querySelector("#myForm");
+    myForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log("submit event");
+    });
+};
 
 
 
